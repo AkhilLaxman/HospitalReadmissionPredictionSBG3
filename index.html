@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Patient Readmission Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form name="form" action="{{ url_for('y_predict')}}" method="POST" enctype="multipart/form-data" >
+		<label>Race- 0:African American 1:Asian 2:Cacasian 3:Hispanic 4:Other</label>
+    	<input type="number" name="race" placeholder="Race" required="required" /><br>
+    	<label>Gender- 0: Female 1:Male</label>
+		<input type="number" name="gender" placeholder="Gender" required="required" /><br>
+    	<input type="number" name="age" placeholder="Age" required="required" /><br>
+    	<input type="number" name="discharge_disposition_id" placeholder="discharge_disposition_id" required="required" /><br>
+		<input type="number" name="admission_source_id" placeholder="admission_source_id" required="required" /><br>
+		<input type="number" name="time_in_hospital" placeholder="time_in_hospital" required="required" /><br>
+		<input type="number" name="num_lab_procedures" placeholder="num_lab_procedures" required="required" /><br>
+		<input type="number" name="num_procedures" placeholder="num_procedures" required="required" /><br>
+		<input type="number" name="num_medications" placeholder="num_medications" required="required" /><br>
+		<input type="number" name="diag_1" placeholder="diag_1" required="required" /><br>
+		<input type="number" name="diag_2" placeholder="diag_2" required="required" /><br>
+		<input type="number" name="diag_3" placeholder="diag_3" required="required" /><br>
+		<input type="number" name="number_diagnoses" placeholder="number_diagnoses" required="required" /><br>
+		<input type="number" name="A1Cresult" placeholder="A1Cresult" required="required" /><br>
+		<input type="number" name="metformin" placeholder="metformin" required="required" /><br>
+        <input type="number" name="glimepiride" placeholder="glimepiride" required="required" /><br>
+		<input type="number" name="glipizide" placeholder="glipizide" required="required" /><br>
+		<input type="number" name="glyburide" placeholder="glyburide" required="required" /><br>
+		<input type="number" name="tolbutamide" placeholder="tolbutamide" required="required" /><br>
+		<input type="number" name="pioglitazone" placeholder="pioglitazone" required="required" /><br>
+		<input type="number" name="rosiglitazone" placeholder="rosiglitazone" required="required" /><br>
+		<input type="number" name="acarbose" placeholder="acarbose" required="required" /><br>
+		<input type="number" name="insulin" placeholder="insulin" required="required" /><br>
+		<input type="number" name="glyburide-metformin" placeholder="glyburide-metformin" required="required" /><br>
+		<input type="number" name="glipizide-metformin" placeholder="glipizide-metformin" required="required" /><br>
+		<input type="number" name="glimepiride-pioglitazone" placeholder="glimepiride-pioglitazone" required="required" /><br>
+		<input type="number" name="metformin-pioglitazone" placeholder="metformin-pioglitazone" required="required" /><br>
+		<input type="number" name="change" placeholder="change of medication" required="required" /><br>
+    	<input type="number" name="diabetesMed" placeholder="diabetes Medication prescribed" required="required" /><br>
+		<button type="submit" class="btn btn-danger btn-block btn-large">Predict</button>
+    
+   </form>
+
+   
+   <center>{{ prediction_text }}</center>
+
+ </div>
+
+
+</body>
+</html>
+
